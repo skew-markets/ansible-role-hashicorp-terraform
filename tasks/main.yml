@@ -1,0 +1,37 @@
+---
+
+- name: 'push terraform bash include'
+  template:
+    src: terraform.sh.j2
+    dest: /usr/local/etc/bash.d/terraform.sh
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags:
+  - terraform
+  - terraform-bash
+
+- name: 'download Terraform zip file'
+  get_url:
+    url: '{{hashicorp_repo}}/terraform/{{terraform_version}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
+    dest: '{{hashicorp_dir_staging}}'
+    timeout: '{{ct_internet_timeout}}'
+    validate_certs: false
+  tags:
+  - terraform
+  - terraform-pkg
+
+- name: 'expand zip files'
+  unarchive:
+    src: '{{hashicorp_dir_staging}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
+    dest: '{{hashicorp_dir_bin}}'
+    copy: false
+  become: true
+  ignore_errors: '{{ansible_check_mode}}'
+  tags:
+  - terraform
+  - terraform-pkg
+
+# --------------------------------
+...

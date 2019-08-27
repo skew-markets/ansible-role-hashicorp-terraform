@@ -1,0 +1,14 @@
+# --------------------------------
+export PATH="{{hashicorp_dir_bin}}:${PATH}"
+#
+alias tf={{hashicorp_dir_bin}}/terraform
+alias tfapply='tf apply PLAN'
+alias   tffmt='tf fmt'
+alias   tfget='tf get'
+alias   tfinit='tf init'
+alias  tfplan='tf plan -out PLAN'
+alias  tfplanx='tf plan -lock=false -out PLAN'
+alias   tfout='tf output'
+alias   tfval='tf validate'
+alias    lltf='/bin/ls -l *.tf'
+# --------------------------------

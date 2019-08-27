@@ -1,0 +1,5 @@
+---
+terraform_format: 'zip'
+terraform_state: present
+terraform_version: '0.11.14'
+...
