@@ -16,7 +16,7 @@
   get_url:
     url: '{{hashicorp_repo}}/terraform/{{terraform_version}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
     dest: '{{hashicorp_dir_staging}}'
-    timeout: '{{ct_internet_timeout}}'
+    timeout: '{{hashicorp_internet_timeout}}'
     validate_certs: false
   tags:
   - terraform
