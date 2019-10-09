@@ -1,6 +1,6 @@
 ---
 
-- name: 'push terraform bash include'
+- name: 'push bash include'
   template:
     src: terraform.sh.j2
     dest: /usr/local/etc/bash.d/terraform.sh
@@ -11,7 +11,7 @@
   tags:
   - ct-terraform
 
-- name: 'download Terraform zip file'
+- name: 'download archive'
   get_url:
     url: '{{hashicorp_repo}}/terraform/{{terraform_version}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
     dest: '{{hashicorp_dir_staging}}'
@@ -20,7 +20,7 @@
   tags:
   - ct-terraform
 
-- name: 'expand zip files'
+- name: 'expand archive'
   unarchive:
     src: '{{hashicorp_dir_staging}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
     dest: '{{hashicorp_dir_bin}}'
