@@ -2,4 +2,6 @@
 terraform_format: 'zip'
 terraform_state: present
 terraform_version: '0.11.14'
+#
+terraform_target: 'terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
 ...

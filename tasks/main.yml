@@ -13,7 +13,7 @@
 
 - name: 'download archive'
   get_url:
-    url: '{{hashicorp_repo}}/terraform/{{terraform_version}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
+    url: '{{hashicorp_repo}}/terraform/{{terraform_version}}/{{terraform_target}}'
     dest: '{{hashicorp_dir_staging}}'
     timeout: '{{hashicorp_internet_timeout}}'
     validate_certs: false
@@ -22,7 +22,7 @@
 
 - name: 'expand archive'
   unarchive:
-    src: '{{hashicorp_dir_staging}}/terraform_{{terraform_version}}_{{hashicorp_arch}}.{{terraform_format}}'
+    src: '{{hashicorp_dir_staging}}/{{terraform_target}}'
     dest: '{{hashicorp_dir_bin}}'
     copy: false
   become: true
