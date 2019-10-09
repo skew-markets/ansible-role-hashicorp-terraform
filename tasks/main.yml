@@ -9,8 +9,7 @@
     mode: 0644
   become: true
   tags:
-  - terraform
-  - terraform-bash
+  - ct-terraform
 
 - name: 'download Terraform zip file'
   get_url:
@@ -19,8 +18,7 @@
     timeout: '{{hashicorp_internet_timeout}}'
     validate_certs: false
   tags:
-  - terraform
-  - terraform-pkg
+  - ct-terraform
 
 - name: 'expand zip files'
   unarchive:
@@ -30,8 +28,7 @@
   become: true
   ignore_errors: '{{ansible_check_mode}}'
   tags:
-  - terraform
-  - terraform-pkg
+  - ct-terraform
 
 # --------------------------------
 ...
